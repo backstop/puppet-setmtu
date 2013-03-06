@@ -3,7 +3,7 @@ class setmtu::ifconfig {
     'RedHat': {
       exec {'change current MTU':
         path    => '/sbin',
-        command => "ifconfig eth0 mtu ${mtu}",
+        command => "/sbin/ifconfig eth0 mtu ${mtu}",
         require => Class['setmtu::config'],
         unless  => "/sbin/ifconfig eth0 | /bin/grep -i 'mtu:${mtu}' &> /dev/null",
       }
